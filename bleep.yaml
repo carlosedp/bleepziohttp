@@ -1,0 +1,26 @@
+$schema: https://raw.githubusercontent.com/oyvindberg/bleep/master/schema.json
+$version: 0.0.2
+jvm:
+  name: graalvm-java17:22.3.2
+projects:
+  httpserver:
+    dependencies:
+      - dev.zio::zio-http:3.0.0-RC2
+      - dev.zio::zio:2.0.15
+    extends: template-common
+    folder: ./httpserver
+  tests:
+    dependencies:
+      - dev.zio::zio-test-sbt:2.0.15
+      - dev.zio::zio-test:2.0.15
+    dependsOn: httpserver
+    extends: template-common
+    folder: ./httpserver/test
+    isTestProject: true
+    testFrameworks: zio.test.sbt.ZTestFramework
+templates:
+  template-common:
+    platform:
+      name: jvm
+    scala:
+      version: 3.3.0
