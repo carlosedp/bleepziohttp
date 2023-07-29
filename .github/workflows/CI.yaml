@@ -1,0 +1,27 @@
+name: Scala CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["*"]
+  pull_request:
+    branches: ["*"]
+
+concurrency:
+  group: ${{ github.ref }}-CI
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bleep
+        uses: bleep-build/bleep-setup-action@0.0.1
+
+      - name: Run Bleep Tests
+        run: bleep --no-color test

@@ -2,6 +2,8 @@
 
 This is a sample project based on ZIO and ZIO-HTTP using Scala [Bleep](https://bleep.build/docs/) build tool which uses a simple, data-only build file written in YAML (`bleep.yaml`) that has no logic or code and is blazing fast.
 
+The project also includes a GitHub Action to run tests automatically serving as a template.
+
 ## Pre-Reqs
 
 I recommend [using Coursier](https://get-coursier.io/docs/cli-installation#native-launcher) to manage tooling install.
