@@ -1,4 +1,4 @@
-# Bleep ZIO-Http Sample
+# Scala Bleep ZIO-HTTP Sample Project
 
 This is a sample project based on ZIO and ZIO-HTTP using Scala [Bleep](https://bleep.build/docs/) build tool which uses a simple, data-only build file written in YAML (`bleep.yaml`) that has no logic or code and is blazing fast.
 
