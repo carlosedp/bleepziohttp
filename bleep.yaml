@@ -20,9 +20,6 @@ projects:
     testFrameworks: zio.test.sbt.ZTestFramework
 templates:
   template-common:
-    source-layout: none
-    sources: ./src
-    resources: ./resources
     platform:
       name: jvm
     scala:
