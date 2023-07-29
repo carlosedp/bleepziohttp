@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/oyvindberg/bleep/master/schema.json
 $schema: https://raw.githubusercontent.com/oyvindberg/bleep/master/schema.json
 $version: 0.0.2
 jvm:
@@ -8,17 +9,21 @@ projects:
       - dev.zio::zio-http:3.0.0-RC2
       - dev.zio::zio:2.0.15
     extends: template-common
-  tests:
+    platform:
+      mainClass: ZioHttpApp
+  httpserver-test:
     dependencies:
       - dev.zio::zio-test-sbt:2.0.15
       - dev.zio::zio-test:2.0.15
     dependsOn: httpserver
     extends: template-common
-    folder: ./httpserver/test
     isTestProject: true
     testFrameworks: zio.test.sbt.ZTestFramework
 templates:
   template-common:
+    source-layout: none
+    sources: ./src
+    resources: ./resources
     platform:
       name: jvm
     scala:
