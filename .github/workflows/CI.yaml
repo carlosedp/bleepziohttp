@@ -23,5 +23,9 @@ jobs:
       - name: Setup Bleep
         uses: bleep-build/bleep-setup-action@0.0.1
 
+      - name: Cache packages
+        uses: coursier/cache-action@v6
+        id: coursier-cache
+
       - name: Run Bleep Tests
         run: bleep --no-color test
