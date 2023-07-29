@@ -1,0 +1,10 @@
+{
+  "files.watcherExclude": {
+    "**/target": true
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/oyvindberg/bleep/master/schema.json": [
+      "bleep.yaml"
+    ]
+  }
+}
