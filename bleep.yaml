@@ -10,6 +10,12 @@ projects:
     extends: template-common
     platform:
       mainClass: ZioHttpApp
+  httpserver-gen: # Use this project to generate graalvm native image metadata
+    dependsOn: httpserver
+    extends: template-common
+    platform:
+      mainClass: ZioHttpApp
+      jvmOptions: -agentlib:native-image-agent=config-merge-dir=httpserver/src/resources/META-INF/native-image
   httpserver-test:
     dependencies:
       - dev.zio::zio-test-sbt:2.0.15
@@ -18,6 +24,10 @@ projects:
     extends: template-common
     isTestProject: true
     testFrameworks: zio.test.sbt.ZTestFramework
+  scripts:
+    dependencies:
+      - build.bleep::bleep-plugin-native-image:${BLEEP_VERSION}
+    extends: template-common
 templates:
   template-common:
     platform:
@@ -25,3 +35,8 @@ templates:
     scala:
       options: -Wunused:all -Wvalue-discard -deprecation -feature -unchecked
       version: 3.3.0
+      strict: true
+scripts:
+  native-image:
+    main: bleep.scripts.GenNativeImage
+    project: scripts

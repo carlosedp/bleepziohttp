@@ -4,3 +4,6 @@
 .bsp
 .scala-build
 /target
+/*.o
+/*.build_artifacts.txt
+/*-native

@@ -36,3 +36,11 @@ Test the project with:
 ```sh
 bleep test
 ```
+
+To generate the GraalVM native-image binary, use:
+
+```sh
+bleep native-image httpserver
+```
+
+The generated binary name and path will be printed at the output.
