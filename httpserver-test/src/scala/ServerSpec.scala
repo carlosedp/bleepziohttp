@@ -42,8 +42,8 @@ object MainSpec extends ZIOSpecDefault:
         test("should greet User if using path"):
           for
             response <- greetApp.runZIO(
-                          Request.get(URL(Root / "greet" / "User"))
-                        )
+              Request.get(URL(Root / "greet" / "User"))
+            )
             body <- response.body.asString
           yield assertTrue(
             response.status == Status.Ok,
@@ -53,10 +53,10 @@ object MainSpec extends ZIOSpecDefault:
         test("should greet User if using query param"):
           for
             response <- greetApp.runZIO(
-                          Request.get(
-                            URL(Root / "greet", queryParams = QueryParams("name" -> "User"))
-                          )
-                        )
+              Request.get(
+                URL(Root / "greet", queryParams = QueryParams("name" -> "User"))
+              )
+            )
             body <- response.body.asString
           yield assertTrue(
             response.status == Status.Ok,
