@@ -30,7 +30,8 @@ object GenNativeImage extends BleepScript("GenNativeImage"):
         case Some(relPath) =>
           // smoothen over some irritation from github action scripts
           val relPathNoExe = if relPath.endsWith(".exe") then relPath.dropRight(".exe".length) else relPath
-          val file         = if relPathNoExe == args.head then s"$relPathNoExe-native" else relPathNoExe
+          // If output name is same as project name, append -native to it (avoid clash with the project dir)
+          val file = if relPathNoExe == args.head then s"$relPathNoExe-native" else relPathNoExe
           started.buildPaths.cwd / file
         case None => super.nativeImageOutput
     val path = plugin.nativeImage()
